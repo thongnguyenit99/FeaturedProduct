@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="featuredcategory" translate="label" sortOrder="10">
+            <label>Team 1 Featured Product</label>
+        </tab>
+        <section id="featuredcategory" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Featured Product</label>
+            <tab>featuredcategory</tab>
+            <resource>Team1_FeaturedCategory::featuredcategory_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>General Configuration</label>
+                <field id="category_name" translate="label" type="label" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Category Name</label>
+                </field>
+                <field id="latest_category" translate="label" type="select" sortOrder="12" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Select Category</label>
+                    <source_model>Team1\FeaturedCategory\Model\Config\Source\Category</source_model>
+                    <validate>required-entry validate-no-empty</validate>
+                </field>
+                <field id="limit_product" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Limit Product</label>
+                    <validate>required-entry no-whitespace validate-number validate-not-negative-number validate-length
+                        maximum-length-1 validate-digits-range digits-range-1-6
+                    </validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

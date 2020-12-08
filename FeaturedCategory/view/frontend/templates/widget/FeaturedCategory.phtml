@@ -1,0 +1,58 @@
+<?php
+/** @var \Team1\FeaturedCategory\Block\Widget\FeaturedCategory $block */
+
+$items = $block->getCategoryProductCollection();
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$imageHelper = $objectManager->get('\Magento\Catalog\Helper\Image');
+$review = $this->getLayout()->createBlock('Magento\Catalog\Block\Product\AbstractProduct');
+$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+$type = 'widget-featured-grid';
+
+?>
+
+<h3 class="featured-title"><?php echo $block->getNameCategory() ?></h3>
+<div id="fp-arrow">
+    <span id="fp-arrow-left"><i class="far fa-chevron-left"></i></span>
+    <span id="fp-arrow-right"><i class="far fa-chevron-right"></i></span>
+</div>
+<div class="featured-slider">
+    <?php foreach ($items as $product) :
+        $image_url = $block->getProductImageUrl($product);
+        ?>
+
+        <div class="featured-product">
+            <div class="product-item-team1 mb-3 row">
+                <div class="featured-images">
+                    <a href="<?= $product->getProductUrl() ?>">
+                        <img class="img-featured" src="<?= $image_url ?>" title="<?php echo $product->getName(); ?>">
+                    </a>
+                </div>
+                <div class="product-details col-md-7">
+                    <div class="product-title">
+                        <a href="<?php /* @escapeNotVerified */
+                        echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
+                    </div>
+                    <!-- show review and rating -->
+                    <div class="product-ratings">
+                        <?php if ($templateType) : ?>
+                            <?= $review->getReviewsSummaryHtml($product, $templateType, false); ?>
+                        <?php endif; ?>
+                        <?php if ((int)$product->getReviewsCount() == 0) : ?>
+                        <div class="product-reviews-summary short">
+                            <div class="rating-summary">
+                                <div class="rating-result" title="0%">
+                                    <span style="width: 0%;"><span>0%</span></span>
+                                </div>
+                            </div>
+			</div>
+                        <?php endif; ?>
+                    </div>
+                    <!-- show price -->
+                    <div class="product-price">
+                        <?= $block->getProductPriceHtml($product, $type); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <featuredcategory>
+            <general>
+                <category_name>FEATURED</category_name>
+                <latest_category></latest_category>
+                <limit_product>4</limit_product>
+            </general>
+        </featuredcategory>
+    </default>
+</config>

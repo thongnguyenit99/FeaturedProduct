@@ -1,0 +1,17 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Team1_FeaturedCategory::css/style.css"/>
+        <css src="Team1_FeaturedCategory::css/slick.css"/>
+        <css src="Team1_FeaturedCategory::css/slick-theme.css"/>
+        <script src="Team1_FeaturedCategory::js/featureproducts.js"/>
+    </head>
+    <body>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceContainer name="sidebar.additional">
+            <block class="Team1\FeaturedCategory\Block\Widget\FeaturedCategory"
+                   template="Team1_FeaturedCategory::widget/FeaturedCategory.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
